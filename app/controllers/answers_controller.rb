@@ -1,5 +1,6 @@
 class AnswersController <ApplicationController
 
+  before_filter :authorize, only: [:create]
 
   def create
     @answer = Answer.new(answer_params)
