@@ -1,6 +1,14 @@
 <h1>Stack OverFlow Clone</h1>
 <h2>Ask your !@#$ question!</h2>
 
+<% for question in @questions %>
+  <p><%= link_to question.question, question_path(question.id)%></p>
+  <hr>
+<% end %>
+
+<%= link_to "Add A Question", new_question_path, :class => "btn btn-primary" %>
+
+
 
 
 
