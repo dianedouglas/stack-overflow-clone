@@ -13,4 +13,8 @@ Rails.application.routes.draw do
     resources :answers
   end
 
+  resources :answers do
+    resources :answers
+  end
+
 end
