@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :questions do
-    resources :answers
+    resources :answers do
+      resources :votes
+    end
   end
 
 end
