@@ -8,8 +8,9 @@
 <h1>Answers</h1>
 <ul id="answers">
   <% @question.answers.each do |answer| %>
-
-      <%= answer.votes.count %> <%= link_to "+", question_answer_votes_path(@question.id, answer.id), method: "post", class: "btn-md btn-success"%> <%= answer.answer + " -" + User.find(answer.user_id).email %>
+      <span>
+      <%= answer.votes.count %> <%= link_to "+", question_answer_votes_path([@question.id, answer.id], remote: true), method: "post", class: "btn-md btn-success"%> <%= answer.answer + " -" + User.find(answer.user_id).email %>
+      </span>
       <br>
       <br>
 
