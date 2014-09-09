@@ -1,5 +1,6 @@
 class VotesController <ApplicationController
 
+  before_filter :authorize, only: [:create]
 
   def create
     @vote = Vote.new(:answer_id => params[:answer_id])
