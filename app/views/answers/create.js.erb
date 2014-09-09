@@ -1,3 +1,5 @@
-$(function(){
-  $('#answers').append("<li><%=@answer.answer%> -<%=User.find(@answer.user_id).email%></li>");
-});
+  <% if @answer.save %>
+    $('#answers').append("<li><%=@answer.answer%> -<%=User.find(@answer.user_id).email%></li>");
+  <% else %>
+    alert('You done fucked up.');
+  <% end %>
