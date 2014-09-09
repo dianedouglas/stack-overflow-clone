@@ -3,18 +3,20 @@
 <%= @question.question %>
 <br>
 <br>
-<%= link_to "Edit Question", edit_question_path, class: "btn btn-primary"%>
-<%= link_to "Delete Question", question_path, method: "delete", class: "btn btn-danger"%>
+<%= link_to "Edit Question", edit_question_path(@question), class: "btn btn-primary"%>
+<%= link_to "Delete Question", question_path(@question), method: "delete", class: "btn btn-danger"%>
 <h1>Answers</h1>
-<% @question.answers.each do |answer| %>
-  <li>
-    <%= answer.answer + " -" + User.find(answer.user_id).email %>
-  </li>
+<ul id="answers">
+  <% @question.answers.each do |answer| %>
+    <li>
+      <%= answer.answer + " -" + User.find(answer.user_id).email %>
+    </li>
 
-<%end%>
+  <%end%>
+</ul>
 <br>
 <br>
-<%= form_for([@question, @answer]) do |f| %>
+<%= form_for([@question, @answer], remote: true) do |f| %>
   <div class="form-group">
     <%= f.label :answer %>
     <%= f.text_field :answer %>

@@ -1,0 +1,3 @@
+$(function(){
+  $('#answers').append("<li><%=@answer.answer%> -<%=User.find(@answer.user_id).email%></li>");
+});
