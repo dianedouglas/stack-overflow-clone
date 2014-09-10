@@ -8,12 +8,22 @@
 <h1>Answers</h1>
 <ul id="answers">
   <% @question.answers.each do |answer| %>
-      <%= answer.votes.count %>
-      <%= link_to "+", question_answer_votes_path(@question.id, answer.id), remote: true, method: "post", class: "btn-md btn-success"%>
-      <%= answer.answer + " -" + User.find(answer.user_id).email %>
-      <br>
-      <br>
+    <span id="<%=answer.id%>">
+    <%= answer.votes.count %>
+    <%= link_to "+", question_answer_votes_path(@question.id, answer.id), remote: true, method: "post", class: "btn-md btn-success"%>
+    <%= answer.answer + " -" + User.find(answer.user_id).email %>
+    </span>
+    <br>
+    <br>
 
+    <script>
+    $('#<%=answer.id%>').click(function(event){
+      if('<%=current_user.id%>' == '<%=@question.user_id%>'){
+        $('#answers').css('color', 'black');
+        $(this).css('color', 'green');
+      }
+    });
+    </script>
   <%end%>
 </ul>
 <br>
