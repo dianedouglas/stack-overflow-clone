@@ -11,6 +11,7 @@ gem 'bcrypt-ruby'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'pry'
+gem 'textacular'
 
 group :development do
   gem 'better_errors'

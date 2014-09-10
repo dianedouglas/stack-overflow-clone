@@ -1,6 +1,13 @@
 <h1>Stack OverFlow Clone</h1>
 <h2>Ask your !@#$ question!</h2>
 
+<%= form_tag questions_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
 <% for question in @questions %>
   <p><%= link_to question.question, question_path(question.id)%></p>
   <hr>

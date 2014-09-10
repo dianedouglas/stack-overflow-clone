@@ -3,7 +3,11 @@ class QuestionsController <ApplicationController
   before_filter :authorize, only: [:edit, :update, :new, :destroy]
 
   def index
-    @questions = Question.all
+    if params[:query]
+      @questions = Question.basic_search(params[:query])
+    else
+      @questions = Question.all
+    end
   end
 
   def new
