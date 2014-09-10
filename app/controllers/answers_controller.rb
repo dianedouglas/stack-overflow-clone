@@ -12,6 +12,13 @@ class AnswersController <ApplicationController
     end
   end
 
+  def update
+    @question = Question.find(params[:question_id])
+      respond_to do |format|
+        format.js
+      end
+  end
+
 private
   def answer_params
     params.require(:answer).permit(:answer)

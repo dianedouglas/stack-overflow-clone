@@ -12,18 +12,14 @@
     <%= answer.votes.count %>
     <%= link_to "+", question_answer_votes_path(@question.id, answer.id), remote: true, method: "post", class: "btn-md btn-success"%>
     <%= answer.answer + " -" + User.find(answer.user_id).email %>
+    <%= link_to "correct!", question_answer_path(@question.id, answer.id), remote: true, method: "patch", class: "btn-md btn-primary"%>
     </span>
+      <% if answer.correct == true %>
+        <script>
+          $('#<%=answer.id%>').css('color', 'green');
+        </script>
+      <%end%>
     <br>
-    <br>
-
-    <script>
-    $('#<%=answer.id%>').click(function(event){
-      if('<%=current_user.id%>' == '<%=@question.user_id%>'){
-        $('#answers').css('color', 'black');
-        $(this).css('color', 'green');
-      }
-    });
-    </script>
   <%end%>
 </ul>
 <br>

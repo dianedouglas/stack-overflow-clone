@@ -1,0 +1,9 @@
+<% if current_user.id == @question.user_id %>
+<%@question.answers.each {|answer| answer.update(correct: false)} %>
+$('#answers span').css('color', 'black');
+<% this_answer = @question.answers.find(params[:id]) %>
+<% this_answer.update(correct: true)%>
+$('#<%= this_answer.id %>').css('color', 'green');
+<% else %>
+ alert("You are not the user who asked this question!");
+<% end %>
