@@ -7,7 +7,7 @@
 <%= link_to "Delete Question", question_path(@question), method: "delete", class: "btn btn-danger"%>
 <h1>Answers</h1>
 <ul id="answers">
-  <% @question.answers.each do |answer| %>
+  <% @question.answers.top.each do |answer| %>
     <span id="<%=answer.id%>">
     <%= answer.votes.count %>
     <%= link_to "+", question_answer_votes_path(@question.id, answer.id), remote: true, method: "post", class: "btn-md btn-success"%>
