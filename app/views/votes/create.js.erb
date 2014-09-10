@@ -1,7 +1,7 @@
 <% @answer = Answer.find(params[:answer_id]) %>
 <% @question = Question.find(params[:question_id]) %>
 $('#answers').empty();
-<% @question.answers.each do |answer| %>
+<% @question.answers.top.each do |answer| %>
 
   $('#answers').append('<%= answer.votes.count %>' +
     ' '+
