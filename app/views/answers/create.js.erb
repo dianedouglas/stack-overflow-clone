@@ -1,5 +1,5 @@
 <% if @answer.save %>
-  $('#answers').append('<span><%= @answer.votes.count %><%= link_to "+", question_answer_votes_path(@question.id, @answer.id), remote: true, method: "post", class: "btn-md btn-success"%> <%= @answer.answer + " -" + User.find(@answer.user_id).email %></span>');
+  $('#answers').append('<%= @answer.votes.count %> <%= link_to "+", question_answer_votes_path(@question.id, @answer.id), remote: true, method: "post", class: "btn-md btn-success"%> <%= @answer.answer + " -" + User.find(@answer.user_id).email %>');
   $('#answer_answer').val("");
 <% else %>
   alert('You done fucked up.');
